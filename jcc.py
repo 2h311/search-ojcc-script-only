@@ -151,12 +151,13 @@ def get_data_for_multiple_case_numbers(
 if __name__ == "__main__":
     for response in get_data_for_multiple_case_numbers(
         [
-            "22-00010",
-            "21-00010",
-            "17-00013",
-            "16-00016",
-            "13-00018",
-            "12-00012",
+            "22-00012",
+            "19-00011",
+            "18-00018",
+            "16-00011",
+            "20-00020",
+            "15-00001",
+            "17-00022",
         ]
     ):
         if response[
