@@ -11,6 +11,7 @@ from pdfminer.high_level import extract_text
 
 from models import DataToBeReturned
 from models import OjccCaseData
+from db import database
 
 
 logging.basicConfig(format=".. %(message)s")
@@ -148,11 +149,15 @@ def get_data_for_multiple_case_numbers(
 
 
 if __name__ == "__main__":
-    for r in get_data_for_multiple_case_numbers(
+    for response in get_data_for_multiple_case_numbers(
         [
-            "20-00007",
+            "21-00017",
+            "19-00011",
             "13-00012",
-            "18-00043",
+            "16-00041",
+            "10-00012",
         ]
     ):
-        pass
+        # if response["cases"]:
+        # insert into cloud based database
+        database[response["userInputtedCaseNumber"]].insert_many(response["cases"])
