@@ -14,7 +14,7 @@ from models import OjccCaseData
 from db import database
 
 
-logging.basicConfig(format=".. %(message)s")
+logging.basicConfig(format="... %(message)s")
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 proceedings_search_text = "response to petition for benefits filed by"
@@ -151,13 +151,16 @@ def get_data_for_multiple_case_numbers(
 if __name__ == "__main__":
     for response in get_data_for_multiple_case_numbers(
         [
-            "21-00017",
-            "19-00011",
-            "13-00012",
-            "16-00041",
-            "10-00012",
+            "22-00010",
+            "21-00010",
+            "17-00013",
+            "16-00016",
+            "13-00018",
+            "12-00012",
         ]
     ):
-        # if response["cases"]:
-        # insert into cloud based database
-        database[response["userInputtedCaseNumber"]].insert_many(response["cases"])
+        if response[
+            "cases"
+        ]:  # check if we have document to upload to the cloud database
+            # insert into cloud based database
+            database[response["userInputtedCaseNumber"]].insert_many(response["cases"])
